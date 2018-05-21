@@ -1,6 +1,6 @@
 <div class="container">
     <button type="button" class="btn btn-primary" (click)="openModal(template)">Create template modal</button>
-
+    <img src={{imgUrl}}/>
     <ng-template #template>
         <div class="modal-header">
             <h4 class="modal-title pull-left">Modal</h4>
@@ -9,11 +9,13 @@
             </button>
         </div>
         <div class="modal-body">
-            <canvas-whiteboard #canvasWhiteboard [drawButtonClass]="'drawButtonClass'" [drawButtonText]="'Draw'" [clearButtonClass]="'clearButtonClass'" [clearButtonText]="'Clear'" [undoButtonText]="'Undo'" [undoButtonEnabled]="true" [redoButtonText]="'Redo'" [redoButtonEnabled]="true"
-                [colorPickerEnabled]="true" [saveDataButtonEnabled]="true" [saveDataButtonText]="'Save'" [lineWidth]="5" [strokeColor]="'rgb(0,0,0)'" [shouldDownloadDrawing]="true" (onBatchUpdate)="sendBatchUpdate($event)" (onClear)="onCanvasClear()" (onUndo)="onCanvasUndo($event)"
-                (onRedo)="onCanvasRedo($event)">
+            <input type="text" name="size" [(ngModel)]="size">
+            <canvas-whiteboard #canvasWhiteboard [options]="canvasOptions" [drawButtonClass]="'drawButtonClass'" [drawButtonText]="'Draw'" [clearButtonClass]="'clearButtonClass'" [clearButtonText]="'Clear'" [undoButtonText]="'Undo'" [undoButtonEnabled]="true" [redoButtonText]="'Redo'"
+                [redoButtonEnabled]="true" [colorPickerEnabled]="true" [saveDataButtonEnabled]="true" [saveDataButtonText]="'Save'" [lineWidth]="25" [strokeColor]="'rgb(0,0,0)'" [shouldDownloadDrawing]="true" (onClear)="onCanvasClear()" (onUndo)="onCanvasUndo($event)"
+                (onRedo)="onCanvasRedo($event)" (onSave)="onCanvasSave($event)">
             </canvas-whiteboard>
         </div>
+
     </ng-template>
 
 
